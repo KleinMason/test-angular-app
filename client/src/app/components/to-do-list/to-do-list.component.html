@@ -1,0 +1,25 @@
+<div class="card shadow-4 hover:shadow-6">
+  <p-card [header]="toDoList.title">
+    <p>Items: {{ toDoList.items.length }}</p>
+    <p>Completed: {{ getCompletedItemCount() }}</p>
+    @for (item of toDoList.items; track $index) {
+      <div class="flex justify-content-between">
+        <p-checkbox
+          [value]="item.isCompleted"
+          [(ngModel)]="item.isCompleted"
+          [binary]="true"
+        ></p-checkbox>
+        <p>{{ item.text }}</p>
+      </div>
+    } @empty {}
+    <ng-template pTemplate="footer">
+      <button
+        pButton
+        type="button"
+        class="w-full"
+        (click)="onOpenClick()"
+        label="Open"
+      ></button>
+    </ng-template>
+  </p-card>
+</div>

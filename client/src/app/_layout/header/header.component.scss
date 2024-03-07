@@ -1,0 +1,29 @@
+header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  clear: both;
+  height: 75px;
+  background-color: #6b9fd3;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .site-name {
+    font-size: 1.5em;
+    margin: 0;
+    display: inline-block;
+    margin-left: 10px;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .header-sidebar-toggle {
+    cursor: pointer;
+  }
+}
