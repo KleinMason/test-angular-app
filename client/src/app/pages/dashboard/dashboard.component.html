@@ -1,0 +1,15 @@
+<div class="component-container">
+  <div class="component-header">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="component-body grid">
+    @for (toDoList of toDoLists; track toDoList.id) {
+      <app-to-do-list
+        [toDoList]="toDoList"
+        class="col-12 md:col-6 lg:col-4 xl:col-3"
+      ></app-to-do-list>
+    } @empty {
+      <p>No to-do lists found</p>
+    }
+  </div>
+</div>

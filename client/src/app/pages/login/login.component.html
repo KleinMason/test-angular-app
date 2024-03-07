@@ -1,0 +1,39 @@
+<div class="component-container">
+  <p-panel header="Login" [style]="{ 'max-width': '750px', margin: 'auto' }">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="p-fluid">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="text" pInputText formControlName="email" />
+          <small
+            *ngIf="emailControl.invalid && emailControl.touched"
+            class="p-error"
+            >Email is required</small
+          >
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <p-password
+            id="password"
+            type="password"
+            [feedback]="false"
+            [toggleMask]="true"
+            formControlName="password"
+          />
+          <small
+            *ngIf="passwordControl.invalid && passwordControl.touched"
+            class="p-error"
+            >Password is required</small
+          >
+        </div>
+        <div class="field">
+          <p-button
+            type="submit"
+            label="Login"
+            [disabled]="!loginForm.valid"
+          ></p-button>
+        </div>
+      </div>
+    </form>
+  </p-panel>
+</div>
