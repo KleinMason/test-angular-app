@@ -1,0 +1,95 @@
+<div class="component-container">
+  <p-panel header="Signup" [style]="{ 'max-width': '750px', margin: 'auto' }">
+    @if (!!signupForm) {
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="p-fluid">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input
+              id="firstName"
+              type="text"
+              pInputText
+              formControlName="firstName"
+            />
+            <small
+              *ngIf="firstNameControl.invalid && firstNameControl.touched"
+              class="p-error"
+              >First Name is required</small
+            >
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input
+              id="lastName"
+              type="text"
+              pInputText
+              formControlName="lastName"
+            />
+            <small
+              *ngIf="lastNameControl.invalid && lastNameControl.touched"
+              class="p-error"
+              >Last Name is required</small
+            >
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="text" pInputText formControlName="email" />
+            <small
+              *ngIf="emailControl.invalid && emailControl.touched"
+              class="p-error"
+              >Email is required</small
+            >
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <p-password
+              id="password"
+              type="password"
+              [toggleMask]="true"
+              formControlName="password"
+            ></p-password>
+            <small
+              *ngIf="passwordControl.invalid && passwordControl.touched"
+              class="p-error"
+              >Password is required</small
+            >
+          </div>
+          <div class="field">
+            <label for="confirmPassword">Confirm Password</label>
+            <p-password
+              id="confirmPassword"
+              type="password"
+              [feedback]="false"
+              [toggleMask]="true"
+              formControlName="confirmPassword"
+            ></p-password>
+            <small
+              *ngIf="
+                confirmPasswordControl.invalid && confirmPasswordControl.touched
+              "
+              class="p-error"
+              >Confirm password</small
+            >
+            <small
+              *ngIf="
+                signupForm.errors &&
+                signupForm.errors['passwordsDoNotMatch'] &&
+                confirmPasswordControl.dirty
+              "
+              class="p-error"
+              >Passwords do not match</small
+            >
+          </div>
+          <div class="field">
+            <p-button
+              type="submit"
+              label="Signup"
+              [disabled]="!signupForm.valid"
+              [loading]="attemptingSignup"
+            ></p-button>
+          </div>
+        </div>
+      </form>
+    }
+  </p-panel>
+</div>

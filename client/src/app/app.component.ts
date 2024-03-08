@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -18,6 +19,7 @@ import { SidebarService } from './_layout/sidebar/sidebar.service';
     HeaderComponent,
     SidebarComponent,
     ToastModule,
+    HttpClientModule,
   ],
   providers: [MessageService, SidebarService],
 })

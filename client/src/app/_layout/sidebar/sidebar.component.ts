@@ -3,6 +3,7 @@ import { MessageService } from 'primeng/api';
 import { SidebarModule } from 'primeng/sidebar';
 import { SidebarMenuItem } from './sidebar-menu-item.model';
 import { SidebarService } from './sidebar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -39,6 +40,7 @@ export class SidebarComponent implements OnInit {
   constructor(
     private sidebarService: SidebarService,
     private messageService: MessageService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -50,22 +52,16 @@ export class SidebarComponent implements OnInit {
         label: 'Dashboard',
         icon: 'pi pi-fw pi-home',
         command: () => {
-          this.messageService.add({
-            severity: 'info',
-            summary: 'Dashboard',
-            detail: 'Navigate to Dashboard',
-          });
+          this.sidebarService.setVisibility(false);
+          this.router.navigate(['/dashboard']);
         },
       },
       {
-        label: 'To-Do List',
-        icon: 'pi pi-fw pi-users',
+        label: 'New User',
+        icon: 'pi pi-fw pi-user-plus',
         command: () => {
-          this.messageService.add({
-            severity: 'info',
-            summary: 'To-Do List',
-            detail: 'Navigate to To-Do List',
-          });
+          this.sidebarService.setVisibility(false);
+          this.router.navigate(['/signup']);
         },
       },
     ];

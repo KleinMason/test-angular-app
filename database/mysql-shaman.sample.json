@@ -1,0 +1,25 @@
+{
+  "poolConfig": {
+    "connectionLimit": 10,
+    "host": "",
+    "user": "",
+    "password": "",
+    "database": "",
+    "waitForConnections": false
+  },
+  "adminPoolConfig": {
+    "connectionLimit": 10,
+    "host": "",
+    "user": "",
+    "password": "",
+    "database": "",
+    "waitForConnections": false
+  },
+  "remote": true,
+  "cwd": "./sql",
+  "scripts": {
+    "tables": [],
+    "primers": [],
+    "views": []
+  }
+}

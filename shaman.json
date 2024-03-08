@@ -1,0 +1,23 @@
+{
+	"name": "test-angular-solution",
+	"projects": [
+		{
+			"name": "test-angular-client",
+			"environment": "node",
+			"path": "client"
+		},
+		{
+			"name": "test-angular-server",
+			"environment": "node",
+			"template": "node-express-server",
+			"path": "server"
+		},
+		{
+			"name": "test-angular-database",
+			"environment": "node",
+			"template": "node-shaman-database",
+			"path": "database"
+		}
+	],
+	"transform": []
+}
