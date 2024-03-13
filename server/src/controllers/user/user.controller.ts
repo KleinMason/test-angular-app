@@ -15,10 +15,18 @@ export class UserController implements ShamanExpressController {
 
   configure = (express: Application) => {
     let router = Router();
+    router.get("/", this.getAllUsers);
     router.get("/:id", this.getUserById);
     router.post("/", this.addUser);
 
     express.use("/api/v1/user", router);
+  };
+
+  getAllUsers = (_req: any, res: any, next: any) => {
+    return this.userService
+      .getAllUsers()
+      .then((users) => res.json(users))
+      .catch((ex: Error) => next(new RouteError(ex.message, 500)));
   };
 
   getUserById = (req: any, res: any, next: any) => {

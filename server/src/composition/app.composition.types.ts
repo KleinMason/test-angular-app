@@ -7,7 +7,8 @@ const TYPES = {
 
 const SERVICE_TYPES = {
   AuthService: "AuthService",
-  UserService: "UserService"
+  UserService: "UserService",
+  TokenService: "TokenService"
 };
 
 export { TYPES, SERVICE_TYPES };

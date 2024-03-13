@@ -7,5 +7,10 @@
     "password": "",
     "database": "",
     "waitForConnections": false
+  },
+  "jwtConfig": {
+    "rsaPrivateKeyPath": "path\\to\\jwtRS256.key",
+    "rsaPublicKeyPath": "path\\to\\jwtRS256.key.pub",
+    "expiresIn": "1h"
   }
 }

@@ -1,11 +1,10 @@
-import { inject, injectable } from "inversify";
-import { IUserService } from "../user.service";
-import { SERVICE_TYPES } from "../../composition/app.composition.types";
 import * as bcrypt from "bcrypt";
-import { User } from "test-angular-database";
+import { inject, injectable } from "inversify";
+import { SERVICE_TYPES } from "../../composition/app.composition.types";
+import { IUserService } from "../user.service";
 
 export interface IAuthService {
-  login: (email: string, password: string) => Promise<User>;
+  authenticateUser: (email: string, password: string) => Promise<boolean>;
 }
 
 @injectable()
@@ -14,11 +13,14 @@ export class AuthService {
     @inject(SERVICE_TYPES.UserService) private userService: IUserService
   ) {}
 
-  login = async (email: string, password: string): Promise<User> => {
+  authenticateUser = async (
+    email: string,
+    password: string
+  ): Promise<boolean> => {
     const user = await this.userService.getUserByEmail(email);
-    if (!user) throw new Error("User not found");
+    if (!user) return false;
     const isPasswordMatch = await bcrypt.compare(password, user.passwordHash);
-    if (!isPasswordMatch) throw new Error("Invalid password");
-    return user;
+    if (!isPasswordMatch) return false;
+    return true;
   };
 }

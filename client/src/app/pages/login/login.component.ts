@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.messageService.add({
       severity: 'error',
       summary: 'Error',
-      detail: 'Login failed',
+      detail: 'Invalid email or password',
     });
   }
 

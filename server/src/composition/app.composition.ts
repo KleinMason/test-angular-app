@@ -13,6 +13,7 @@ import { AppConfig } from "../models/app.config";
 import { AuthService, IAuthService } from "../services/auth/auth.service";
 import { IUserService, UserService } from "../services/user.service";
 import { SERVICE_TYPES, TYPES } from "./app.composition.types";
+import { ITokenService, TokenService } from "../services/token.service";
 
 export async function Compose(container: Container): Promise<Container> {
   const config = container.get<AppConfig>(SHAMAN_API_TYPES.AppConfig);
@@ -24,11 +25,11 @@ export async function Compose(container: Container): Promise<Container> {
 
 function configureServices(
   container: Container,
-  config: AppConfig
+  _config: AppConfig
 ): Promise<Container> {
-  container.bind<AppConfig>(TYPES.AppConfig).toConstantValue(config);
   container.bind<IUserService>(SERVICE_TYPES.UserService).to(UserService);
   container.bind<IAuthService>(SERVICE_TYPES.AuthService).to(AuthService);
+  container.bind<ITokenService>(SERVICE_TYPES.TokenService).to(TokenService);
   return Promise.resolve(container);
 }
 

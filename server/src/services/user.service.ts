@@ -6,6 +6,8 @@ import { TYPES } from "../composition/app.composition.types";
 export interface IUserService {
   getUserById: (id: number) => Promise<User>;
   getUserByEmail: (email: string) => Promise<User>;
+  getAllUsers: () => Promise<User[]>;
+  getUserIdForEmail: (email: string) => Promise<number>;
   addUser: (
     firstName: string,
     lastName: string,
@@ -27,11 +29,20 @@ export class UserService implements IUserService {
     });
   };
 
+  getAllUsers = async (): Promise<User[]> => {
+    return this.db.models.user.find();
+  };
+
   getUserByEmail = async (email: string): Promise<User> => {
     return this.db.models.user.findOne({
       identity: "email",
       args: [email]
     });
+  };
+
+  getUserIdForEmail = async (email: string): Promise<number> => {
+    const user = await this.getUserByEmail(email);
+    return user.userId;
   };
 
   addUser = async (
