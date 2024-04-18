@@ -26,7 +26,6 @@ import { AuthService } from '../../_shared/services/auth/auth.service';
     PasswordModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

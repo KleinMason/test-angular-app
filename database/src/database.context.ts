@@ -1,8 +1,10 @@
-import { DatabaseContext, Collection } from "mysql-shaman";
-import { User } from "./models/user";
+import { Collection, DatabaseContext } from 'mysql-shaman';
+import { Blog } from './models/blog';
+import { User } from './models/user';
 
 export interface ITestDatabaseContext {
   models: {
+    blog: Collection<Blog>;
     user: Collection<User>;
   };
   runQuery: <T>(query: string, args: any) => Promise<T>;
@@ -13,7 +15,8 @@ export class TestDatabaseContext
   implements ITestDatabaseContext
 {
   models = {
-    user: new Collection<User>()
+    blog: new Collection<Blog>(),
+    user: new Collection<User>(),
   };
 
   runQuery = <T>(query: string, args: any): Promise<T> => {

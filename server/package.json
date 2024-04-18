@@ -5,8 +5,9 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "node ./dist/app.service.js",
+    "copy-shared": "shx mkdir -p ./src/shared && shx rm -rf ./src/shared/* && shx cp -R ../shared/* ./src/shared/",
     "debug": "tsc && node ./dist/app.service.js",
+    "start": "node ./dist/app.service.js",
     "test": "nyc mocha"
   },
   "author": "Shaman CLI",
@@ -23,9 +24,11 @@
     "moment": "~2.29.4",
     "mysql": "~2.18.1",
     "mysql-shaman": "1.0.8",
+    "pino": "^8.20.0",
     "reflect-metadata": "~0.1.13",
     "shaman-api": "^2.0.3",
     "test-angular-database": "file:..\\database",
+    "test-angular-library": "file:..\\library",
     "winston": "~3.8.2"
   },
   "devDependencies": {
@@ -40,6 +43,8 @@
     "colors": "1.4.0",
     "mocha": "~10.2.0",
     "nyc": "~15.1.0",
+    "pino-pretty": "^11.0.0",
+    "shx": "^0.3.4",
     "sinon": "~15.0.1",
     "ts-auto-mock": "~3.6.4",
     "ts-node": "~10.9.1",

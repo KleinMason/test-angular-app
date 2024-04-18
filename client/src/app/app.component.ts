@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { HeaderComponent } from './_layout/header/header.component';
 import { SidebarComponent } from './_layout/sidebar/sidebar.component';
-import { SidebarService } from './_layout/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +17,8 @@ import { SidebarService } from './_layout/sidebar/sidebar.service';
     HeaderComponent,
     SidebarComponent,
     ToastModule,
-    HttpClientModule,
   ],
-  providers: [MessageService, SidebarService],
+  providers: [MessageService],
 })
 export class AppComponent {
   title = 'client';

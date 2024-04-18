@@ -1,0 +1,14 @@
+<p-card [header]="blog.title">
+  <p>
+    {{ blog.content }}
+  </p>
+  <p-footer>
+    <button
+      pButton
+      class="w-full"
+      type="button"
+      label="Read More"
+      (click)="onReadMoreClick(blog.id)"
+    ></button>
+  </p-footer>
+</p-card>

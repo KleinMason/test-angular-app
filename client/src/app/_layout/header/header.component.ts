@@ -13,7 +13,6 @@ export class HeaderComponent {
   constructor(private sidebarService: SidebarService) {}
 
   toggleSidebar = (): void => {
-    console.log('toggleSidebar');
     this.sidebarService.toggleVisibility();
   };
 }

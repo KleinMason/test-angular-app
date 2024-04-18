@@ -4,7 +4,7 @@ export class RouteError extends Error {
   constructor(
     message: string,
     statusCode: number,
-    sendMessage: boolean = true
+    sendMessage: boolean = true,
   ) {
     super(message);
     this.statusCode = statusCode;

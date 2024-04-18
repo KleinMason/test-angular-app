@@ -1,5 +1,5 @@
-import { PoolConfig } from "mysql";
-import { JwtConfig } from "./jwt.config";
+import { PoolConfig } from 'mysql';
+import { JwtConfig } from './jwt.config';
 
 export class AppConfig {
   port: string;

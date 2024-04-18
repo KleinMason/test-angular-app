@@ -6,3 +6,4 @@ node_modules
 .coveralls.yml
 keys/*.key*
 app/config/app.config.json
+shared/

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../models/user.model';
+import { IUser } from '../../models/user.model';
 import { Observable, shareReplay } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class UserService {

@@ -1,0 +1,10 @@
+<div class="component-container">
+  <div class="grid">
+    @for (blog of blogs; track $index) {
+      <app-blog-preview-card
+        [blog]="blog"
+        class="col-12 md:col-6 lg:col-4 xl:col-3"
+      ></app-blog-preview-card>
+    }
+  </div>
+</div>

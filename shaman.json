@@ -17,6 +17,12 @@
 			"environment": "node",
 			"template": "node-shaman-database",
 			"path": "database"
+		},
+		{
+			"name": "test-angular-library",
+			"environment": "node",
+			"template": "node-typescript-library",
+			"path": "library"
 		}
 	],
 	"transform": []

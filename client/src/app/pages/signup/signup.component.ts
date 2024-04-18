@@ -15,7 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import { PasswordModule } from 'primeng/password';
 import { IUser } from '../../_shared/models/user.model';
-import { UserService } from '../../_shared/services/user.service';
+import { UserService } from '../../_shared/services/user/user.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 

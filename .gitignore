@@ -1,2 +1,3 @@
 .vscode
 test-angular-app.session.sql
+node_modules/

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SidebarService {
   protected visible: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false,
   );
 
-  get isVisible(): Observable<boolean> {
-    return this.visible.asObservable();
-  }
+  public isVisible = this.visible.asObservable();
 
   public toggleVisibility = (): void => {
     this.visible.next(!this.visible.value);

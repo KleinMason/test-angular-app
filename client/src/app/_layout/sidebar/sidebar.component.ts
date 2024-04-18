@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
+import { Subject } from 'rxjs';
+import { AuthService } from '../../_shared/services/auth/auth.service';
 import { SidebarMenuItem } from './sidebar-menu-item.model';
 import { SidebarService } from './sidebar.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [SidebarModule],
+  imports: [ButtonModule, CommonModule, SidebarModule],
   template: `
     <p-sidebar
       [(visible)]="isVisible"
@@ -29,22 +32,48 @@ import { Router } from '@angular/router';
           </li>
         }
       </ul>
+      @if (isLoggedIn) {
+        <p-button
+          label="logout"
+          severity="danger"
+          styleClass="w-full"
+          [outlined]="true"
+          (onClick)="onLogoutClick()"
+        ></p-button>
+      } @else {
+        <p-button
+          label="login"
+          styleClass="w-full"
+          [outlined]="true"
+          (onClick)="onLoginClick()"
+        ></p-button>
+      }
     </p-sidebar>
   `,
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
   isVisible: boolean = false;
   menuItems: SidebarMenuItem[] = [];
+  private unsubscribe$ = new Subject<void>();
+  private _isLoggedIn: boolean = false;
+  get isLoggedIn(): boolean {
+    return this._isLoggedIn;
+  }
 
   constructor(
     private sidebarService: SidebarService,
-    private messageService: MessageService,
     private router: Router,
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
+    this.authService.isLoggedIn.subscribe((isLoggedIn: boolean) => {
+      console.log('isLoggedIn', isLoggedIn);
+      this._isLoggedIn = isLoggedIn;
+    });
     this.sidebarService.isVisible.subscribe((visibility: boolean) => {
+      console.log('visibility', visibility);
       this.isVisible = visibility;
     });
     this.menuItems = [
@@ -54,6 +83,14 @@ export class SidebarComponent implements OnInit {
         command: () => {
           this.sidebarService.setVisibility(false);
           this.router.navigate(['/dashboard']);
+        },
+      },
+      {
+        label: 'Blog',
+        icon: 'pi pi-fw pi-pencil',
+        command: () => {
+          this.sidebarService.setVisibility(false);
+          this.router.navigate(['/blog']);
         },
       },
       {
@@ -67,7 +104,23 @@ export class SidebarComponent implements OnInit {
     ];
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   onSidebarHide = (): void => {
     this.sidebarService.setVisibility(false);
+  };
+
+  onLoginClick = (): void => {
+    this.sidebarService.setVisibility(false);
+    this.router.navigate(['/login']);
+  };
+
+  onLogoutClick = (): void => {
+    this.authService.logout();
+    this.sidebarService.setVisibility(false);
+    this.router.navigate(['/login']);
   };
 }

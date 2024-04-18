@@ -1,7 +1,8 @@
 # Typescript Database Library
-*This project was scaffolded using Shaman CLI*
 
-This typescript database library is intended to store data access models, and could be installed in other projects, or built and published to an npm repository. 
+_This project was scaffolded using Shaman CLI_
+
+This typescript database library is intended to store data access models, and could be installed in other projects, or built and published to an npm repository.
 
 ## Building the Project
 
@@ -19,7 +20,7 @@ npm run build
 
 ## Installing in Other Projects
 
-To install this library project in another typescript project, first build the project. Once the project has been built, open the package.json file for the other project (the one that will be *dependent* on this database library project). Now add a property to the "dependency" property that follows the below pattern (note: you may need to create the "dependency" property, if you don't yet have any dependencies):
+To install this library project in another typescript project, first build the project. Once the project has been built, open the package.json file for the other project (the one that will be _dependent_ on this database library project). Now add a property to the "dependency" property that follows the below pattern (note: you may need to create the "dependency" property, if you don't yet have any dependencies):
 
 ```json
 {
@@ -41,7 +42,7 @@ To publish this library to the NPM repository, first build the project. Once the
 npm publish
 ```
 
-*Note: for the publish command to work, you must have an npm account, and be logged in using the npm CLI.
+\*Note: for the publish command to work, you must have an npm account, and be logged in using the npm CLI.
 
 ## Adding Data Access Models
 
